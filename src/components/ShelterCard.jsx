@@ -1,11 +1,17 @@
 const styles = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: 'space-between',
+  alignSelf: 'center',
+  width: '20%',
+  backgroundColor: '#BEBBBB',
+  borderRadius: '10px',
   color: 'black',
   borderWidth: 1,
-  borderColor: 'black',
+  borderColor: '#BEBBBB',
   borderStyle: 'solid',
   margin: '2%',
   padding: '2%',
-  backgroundColor: 'lightgray'
 }
 
 const ShelterCard = ({ idx, shelter, handleAddLocation }) => {

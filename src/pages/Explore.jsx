@@ -49,4 +49,5 @@ function Search(){
         </> 
     )
 }
+
 export default Explore

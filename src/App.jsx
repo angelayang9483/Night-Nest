@@ -5,11 +5,13 @@ import History from './pages/History.jsx'
 import Explore from './pages/Explore.jsx'
 
 import './App.css'
+import Navbar from './components/Navbar.jsx'
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/history" element={<History />} />

@@ -6,6 +6,7 @@ const History = ({savedLocations }) => {
     return (
         <>
         <h1>Visited Shelters</h1>
+        <div style={historyStyle}>
         {savedLocations.length === 0 ? (
             <p>No shelters added.</p>
         ) : (
@@ -17,18 +18,32 @@ const History = ({savedLocations }) => {
                 </div>
             ))
         )}
+        </div>
         </>
     );
 };
 
+const historyStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    padding: '20px',
+
+}
+
 const cardStyle = {
     display: "flex",
     flexDirection: "column",
+    justifyContent: 'space-between',
+    width: '20%',
+    backgroundColor: '#BEBBBB',
+    borderRadius: '10px',
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#BEBBBB',
     borderStyle: 'solid',
     margin: '2%',
     padding: '2%',
   }
-
+  
 export default History

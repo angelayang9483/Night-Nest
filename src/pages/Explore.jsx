@@ -1,36 +1,18 @@
-const shelters =
-   [
-      {
-        "name": "Costco", 
-        "location": "13463 Washington Blvd, Marina Del Rey, CA 90292" 
-      },
-      {
-        "name": "Good Seed Shelter",
-        "location": "6568 5th Ave, Los Angeles, CA 90043" 
-      }, 
-      {
-        "name": "PATH - Hollywood",
-        "location": "5627 Fernwood Ave, Los Angeles, CA 90028" 
-      }
-    ]
-
 import ShelterCard from "../components/shelterCard"
 import shelters from "../data/shelterData"
 import Filter from "../components/Filter"
 import { useState } from 'react'
 
 
-const Explore = ( {handleAddLocation }) => {
+const Explore = ( { handleAddLocation }) => {
     return (
         <div style={ pageStyle } >
             <h1>Explore</h1>
             <Search />
             <FilterBy />
-            <ShelterCard shelters = {shelters} handleAddLocation={handleAddLocation}/>
-        </>
-            {shelters.map((item, index) => (
-                <ShelterCard shelter={item} key={index} />
-            ))}
+            {shelters.map((item, index) => {
+                return <ShelterCard key={index} idx={index} shelter={item} handleAddLocation={handleAddLocation}/>
+            })}
         </div>
     )
 }

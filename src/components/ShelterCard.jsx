@@ -1,4 +1,5 @@
 const styles = {
+  color: 'black',
   borderWidth: 1,
   borderColor: 'black',
   borderStyle: 'solid',

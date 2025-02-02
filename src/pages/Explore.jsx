@@ -10,9 +10,12 @@ function Explore() {
             <Search />
             <FilterBy />
             <h1>Explore</h1>
-            {shelters.map((item, index) => (
-                <ShelterCard shelter={item} key={index} />
-            ))}
+            <card>
+                {shelters.map((item, index) => (
+                    <ShelterCard shelter={item} key={index} />
+                ))}
+            </card>
+            
         </div>
     )
 }
@@ -46,28 +49,38 @@ export default Explore
 
 export function FilterBy() {
     const [selectedTag, setSelectedTag] = useState(null);
+    const [showFilteredShelters, setShowFilteredShelters] = useState(false);
  
     const allTags = [...new Set(shelters.flatMap(shelter => shelter.tags))];
   
     const filteredShelters = selectedTag
       ? shelters.filter(shelter => shelter.tags.includes(selectedTag))
       : shelters;
+
+    const handleTagClick = (tag) => {
+    setSelectedTag(tag);
+    setShowFilteredShelters(true);  
+    };
   
     return (
       <div>
-        <Filter selectedTag={selectedTag} setSelectedTag={setSelectedTag} tags={allTags} />
+        <Filter selectedTag={selectedTag} setSelectedTag={handleTagClick} tags={allTags} />
   
-        {filteredShelters.map((shelter, index) => (
-          <div key={index} className={`filterDiv ${shelter.tags.join(" ")}`}>
-            <h2>{shelter.name}</h2>
-            <p>{shelter.location}</p>
-            <p>Tags: {shelter.tags.join(", ")}</p>
-          </div>
-        ))}
+        {showFilteredShelters && filteredShelters.length > 0 && (
+            <div>
+                {filteredShelters.map((shelter, index) => (
+                    <div key={index} className={`filterDiv ${shelter.tags.join(" ")}`}>
+                        <h2>{shelter.name}</h2>
+                        <p>{shelter.location}</p>
+                        <p>Tags: {shelter.tags.join(", ")}</p>
+                    </div>
+                ))}
+            </div>
+        )}
       </div>
     );
   }
 
 const pageStyle = {
-    width: '90vw',
+    width: '100vw',
 }

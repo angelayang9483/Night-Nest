@@ -8,7 +8,7 @@ const Explore = ( { handleAddLocation }) => {
     return (
         <div style={ pageStyle } >
             <h1>Explore</h1>
-            <Search />
+            <Search handleAddLocation={handleAddLocation}/>
             <FilterBy />
             {shelters.map((item, index) => {
                 return <ShelterCard key={index} idx={index} shelter={item} handleAddLocation={handleAddLocation}/>
@@ -17,7 +17,7 @@ const Explore = ( { handleAddLocation }) => {
     )
 }
 
-function Search() {
+function Search({ handleAddLocation }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [results, setResults] = useState([]);
 
@@ -33,7 +33,7 @@ function Search() {
         <button id="searchButton" onClick={handleSearch}>Search</button>
         <div>
             {results.length > 0 ? (
-                results.map((shelter, index) => <ShelterCard key={index} shelter={shelter} />)
+                results.map((shelter, index) => <ShelterCard key={index} idx={index} shelter={shelter} handleAddLocation={handleAddLocation}/>)
             ) : (
                 <p>No results found</p>
             )}

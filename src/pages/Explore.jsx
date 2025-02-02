@@ -9,7 +9,8 @@ const Explore = ( { handleAddLocation }) => {
         <div style={ pageStyle } >
             <h1>Explore</h1>
             <Search handleAddLocation={handleAddLocation}/>
-            <FilterBy />
+            <FilterBy handleAddLocation={handleAddLocation}/>
+            <h1>All Locations</h1>
             {shelters.map((item, index) => {
                 return <ShelterCard key={index} idx={index} shelter={item} handleAddLocation={handleAddLocation}/>
             })}
@@ -44,30 +45,36 @@ function Search({ handleAddLocation }) {
 
 export default Explore
 
-export function FilterBy() {
+export function FilterBy({ handleAddLocation }) {
     const [selectedTag, setSelectedTag] = useState(null);
- 
+    const [showFilteredShelters, setShowFilteredShelters] = useState(false);
     const allTags = [...new Set(shelters.flatMap(shelter => shelter.tags))];
-  
-    const filteredShelters = selectedTag
+     const filteredShelters = selectedTag
       ? shelters.filter(shelter => shelter.tags.includes(selectedTag))
       : shelters;
-  
-    return (
+ 
+ 
+    const handleTagClick = (tag) => {
+    setSelectedTag(tag);
+    setShowFilteredShelters(true); 
+    };
+     return (
       <div>
-        <Filter selectedTag={selectedTag} setSelectedTag={setSelectedTag} tags={allTags} />
-  
-        {filteredShelters.map((shelter, index) => (
-          <div key={index} className={`filterDiv ${shelter.tags.join(" ")}`}>
-            <h2>{shelter.name}</h2>
-            <p>{shelter.location}</p>
-            <p>Tags: {shelter.tags.join(", ")}</p>
-          </div>
-        ))}
+        <Filter selectedTag={selectedTag} setSelectedTag={handleTagClick} tags={allTags} />
+         {showFilteredShelters && filteredShelters.length > 0 && (
+            <div>
+                <div>
+                    {filteredShelters.map((shelter, index) => (
+                        <ShelterCard key={index} idx={index} shelter={shelter} handleAddLocation={handleAddLocation}/>
+                    ))}
+                </div>
+            </div>
+        )}
       </div>
     );
   }
+ 
 
 const pageStyle = {
-    width: '90vw',
+    width: '100vw',
 }

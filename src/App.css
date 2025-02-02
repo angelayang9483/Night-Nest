@@ -35,10 +35,6 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
 .read-the-docs {
   color: #888;
 }
@@ -46,11 +42,11 @@
 nav {
   list-style-type: none;
   overflow: hidden;
-  background-color: #ece1e1;
+  background-color: #444054;
   width: 100%;
   top: 0;
   display: block;
-  box-shadow: 0px 4px 4px 0px #00000040;
+  box-shadow: 0px 4px 4px 0px #2f243a;
 }
 
 nav ul {
@@ -65,19 +61,19 @@ nav li {
 }
 
 nav a {
-  color: rgb(10, 1, 1);
+  color: white;
 }
 
 nav a:hover {
-  color: rgb(157, 37, 37);
+  color: bebbb;
 }
 #searchButton{
   margin: 5px;
 }
 
 .dropbtn {
-  background-color: #ece1e1;
-  color: black;
+  background-color: #444054;
+  color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -94,7 +90,6 @@ nav a:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f6f6f6;
   min-width: 170px;
   z-index: 1;
   top: 100%;
@@ -103,7 +98,8 @@ nav a:hover {
 }
 
 .dropdown-content button {
-  color: black;
+  color: 2f243a;
+  background-color: bebbbb;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -115,17 +111,8 @@ nav a:hover {
   text-align: center;
 }
 
-.explore-container {
-  display: flex;               /* Flexbox to align items horizontally */
-  align-items: center;         /* Vertically center the items */
-  gap: 20px;                   /* Space between Search and Filter */
-  border: 2px dashed red;      /* Temporary border to show the container */
-  background-color: lightgray; /* Temporary background to highlight the container */
-}
-
-
-.explore-container input,
-.explore-container button {
-  padding: 10px;
-  font-size: 16px;
+.filterDiv{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }

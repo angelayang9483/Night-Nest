@@ -6,8 +6,10 @@ function History() {
 
     return (
         <>
-        <h1>history</h1>
+        <section id="history">
+            <h1>history</h1>
         <button onClick={() => setLike( (prevState) => !prevState)}>Like: { like ? "❤️" : "♡" }</button>
+        </section>
         </>
     )
 }

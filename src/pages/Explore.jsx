@@ -1,31 +1,17 @@
-const shelters =
-   [
-      {
-        "name": "Costco", 
-        "location": "13463 Washington Blvd, Marina Del Rey, CA 90292" 
-      },
-      {
-        "name": "Good Seed Shelter",
-        "location": "6568 5th Ave, Los Angeles, CA 90043" 
-      }, 
-      {
-        "name": "PATH - Hollywood",
-        "location": "5627 Fernwood Ave, Los Angeles, CA 90028" 
-      }
-    ]
+import ShelterCard from "../components/shelterCard"
+import {useState} from 'react';
 
 function Explore() {
     return (
         <>
-        <h1>Explore</h1>
-        <Search />
+          <h1>Explore</h1>
+          <Search />
+          <ShelterCard />
         </>
     )
 }
 
-import {useState} from 'react';
-
-function Search(){
+function Search() {
     const [searchQuery, setSearchQuery] = useState("");
     const [results, setResults] = useState([]);
 
@@ -45,4 +31,4 @@ function Search(){
     )
 }
 
-import default Explore
+export default Explore

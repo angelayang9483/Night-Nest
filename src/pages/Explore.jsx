@@ -1,3 +1,4 @@
+
 const shelters =
    [
       {
@@ -14,11 +15,15 @@ const shelters =
       }
     ]
 
+import ShelterCard from "../components/shelterCard"
+
 function Explore() {
     return (
         <>
         <h1>Explore</h1>
         <Search />
+            <h1>Explore</h1>
+            <ShelterCard />
         </>
     )
 }

@@ -4,7 +4,7 @@ const ShelterCard = () => {
     return (
         <div>
           {shelters.map((item, index) => (
-            <div style={cardStyle} key={index}>
+            <div style={cardStyle} key={index} className={`filterDiv ${shelters.tags}`}>
               <h3>{item.name}</h3>
               <p>{item.location}</p>
             </div>

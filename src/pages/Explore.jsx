@@ -1,29 +1,14 @@
-
-const shelters =
-   [
-      {
-        "name": "Costco", 
-        "location": "13463 Washington Blvd, Marina Del Rey, CA 90292" 
-      },
-      {
-        "name": "Good Seed Shelter",
-        "location": "6568 5th Ave, Los Angeles, CA 90043" 
-      }, 
-      {
-        "name": "PATH - Hollywood",
-        "location": "5627 Fernwood Ave, Los Angeles, CA 90028" 
-      }
-    ]
-
+import shelters from "../data/shelterData";
 import ShelterCard from "../components/shelterCard"
 
 function Explore() {
     return (
         <>
         <h1>Explore</h1>
-        <Search />
+        <Search /> 
+        <FilterBy />
             <h1>Explore</h1>
-            <ShelterCard />
+        <ShelterCard />
         </>
     )
 }
@@ -51,3 +36,29 @@ function Search(){
 }
 
 export default Explore
+
+import Filter from "../components/Filter"
+
+export function FilterBy() {
+    const [selectedTag, setSelectedTag] = useState(null);
+ 
+    const allTags = [...new Set(shelters.flatMap(shelter => shelter.tags))];
+  
+    const filteredShelters = selectedTag
+      ? shelters.filter(shelter => shelter.tags.includes(selectedTag))
+      : shelters;
+  
+    return (
+      <div>
+        <Filter selectedTag={selectedTag} setSelectedTag={setSelectedTag} tags={allTags} />
+  
+        {filteredShelters.map((shelter, index) => (
+          <div key={index} className={`filterDiv ${shelter.tags.join(" ")}`}>
+            <h2>{shelter.name}</h2>
+            <p>{shelter.location}</p>
+            <p>Tags: {shelter.tags.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }

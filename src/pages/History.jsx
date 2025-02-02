@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
-const History = ({savedLocations }) => {
-    const [like, setLike] = useState(false);
-
+const History = ({savedLocations, handleLike}) => {
     return (
         <>
         <h1>Visited Shelters</h1>
@@ -14,7 +12,9 @@ const History = ({savedLocations }) => {
                 <div style={cardStyle} key={index}>
                     <h3>{shelter.name}</h3>
                     <p>{shelter.location}</p>
-                    <button onClick={() => setLike( (prevState) => !prevState)}>Like: { like ? "❤️" : "♡" }</button>
+                    <button onClick={() => handleLike(index)}>
+                        Like: { shelter.liked ? "❤️" : "♡" }
+                        </button>
                 </div>
             ))
         )}
@@ -29,6 +29,7 @@ const historyStyle = {
     justifyContent: 'center',
     flexWrap: 'wrap',
     padding: '20px',
+    margin: '5px',
 
 }
 

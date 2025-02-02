@@ -1,6 +1,6 @@
 const ShelterCard = ({ shelter }) => {
   return (
-    <div>
+    <div className={`filterDiv ${shelter.tags}`}>
         <div style={styles}>
           <h3>{shelter.name}</h3>
           <p>{shelter.location}</p>

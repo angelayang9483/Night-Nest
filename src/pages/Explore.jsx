@@ -1,5 +1,6 @@
 import ShelterCard from "../components/shelterCard"
 import shelters from "../data/shelterData"
+import Filter from "../components/Filter"
 import { useState } from 'react'
 
 
@@ -7,6 +8,7 @@ function Explore() {
     return (
         <div style={ pageStyle } >
             <Search />
+            <FilterBy />
             <h1>Explore</h1>
             {shelters.map((item, index) => (
                 <ShelterCard shelter={item} key={index} />
@@ -41,6 +43,30 @@ function Search() {
 }
 
 export default Explore
+
+export function FilterBy() {
+    const [selectedTag, setSelectedTag] = useState(null);
+ 
+    const allTags = [...new Set(shelters.flatMap(shelter => shelter.tags))];
+  
+    const filteredShelters = selectedTag
+      ? shelters.filter(shelter => shelter.tags.includes(selectedTag))
+      : shelters;
+  
+    return (
+      <div>
+        <Filter selectedTag={selectedTag} setSelectedTag={setSelectedTag} tags={allTags} />
+  
+        {filteredShelters.map((shelter, index) => (
+          <div key={index} className={`filterDiv ${shelter.tags.join(" ")}`}>
+            <h2>{shelter.name}</h2>
+            <p>{shelter.location}</p>
+            <p>Tags: {shelter.tags.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
 const pageStyle = {
     width: '90vw',

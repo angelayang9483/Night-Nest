@@ -6,6 +6,7 @@ const styles = {
   width: '20%',
   backgroundColor: '#BEBBBB',
   borderRadius: '10px',
+  color: 'black',
   borderWidth: 1,
   borderColor: '#BEBBBB',
   borderStyle: 'solid',

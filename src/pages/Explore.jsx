@@ -44,4 +44,5 @@ function Search(){
         </> 
     )
 }
-export default Explore
+
+import default Explore

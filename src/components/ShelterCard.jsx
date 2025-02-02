@@ -1,9 +1,10 @@
 const styles = {
   borderWidth: 1,
-  borderColor: 'red',
+  borderColor: 'black',
   borderStyle: 'solid',
   margin: '2%',
   padding: '2%',
+  backgroundColor: 'lightgray'
 }
 
 const ShelterCard = ({ idx, shelter, handleAddLocation }) => {

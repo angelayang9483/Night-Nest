@@ -8,7 +8,7 @@ function Home() {
             <img style={styles} src={seekinghumankindness} alt="Logo"/>
             <div style={{width: '50%', margin: 'auto'}}>
                 <text>
-                Living in LA, we often see unhoused people struggling to find safe areas to stay. With situations changing often, it is difficult to find a comprehensive and reliable list of places that allow overnight parking. 
+                Living in LA, we often see unhoused people struggling to find safe areas to stay. With situations changing often, it is difficult to find a comprehensive and reliable list of places that allow overnight parking. NightNest aims to address this issue. 
                 </text>
             </div>
         </div>

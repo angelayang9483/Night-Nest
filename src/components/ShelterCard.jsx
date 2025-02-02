@@ -1,24 +1,21 @@
-import shelters from "../data/shelterData";
-
-const ShelterCard = () => {
-    return (
-        <div>
-          {shelters.map((item, index) => (
-            <div style={cardStyle} key={index}>
-              <h3>{item.name}</h3>
-              <p>{item.location}</p>
-            </div>
-          ))}
+const ShelterCard = ({ shelter }) => {
+  return (
+    <div>
+        <div style={styles}>
+          <h3>{shelter.name}</h3>
+          <p>{shelter.location}</p>
         </div>
-      );
-    };
+    </div>
+  );
+};
 
 export default ShelterCard;
 
-const cardStyle = {
+const styles = {
   borderWidth: 1,
   borderColor: 'red',
   borderStyle: 'solid',
   margin: '2%',
   padding: '2%',
+  width: '50%'
 }

@@ -15,38 +15,77 @@ const shelters =
     ]
 
 import ShelterCard from "../components/shelterCard"
+import shelters from "../data/shelterData"
+import Filter from "../components/Filter"
+import { useState } from 'react'
+
 
 const Explore = ( {handleAddLocation }) => {
     return (
-        <>
-        <h1>Explore</h1>
-        <Search />
+        <div style={ pageStyle } >
             <h1>Explore</h1>
+            <Search />
+            <FilterBy />
             <ShelterCard shelters = {shelters} handleAddLocation={handleAddLocation}/>
         </>
+            {shelters.map((item, index) => (
+                <ShelterCard shelter={item} key={index} />
+            ))}
+        </div>
     )
 }
 
-import {useState} from 'react';
-
-function Search(){
+function Search() {
     const [searchQuery, setSearchQuery] = useState("");
     const [results, setResults] = useState([]);
 
     const handleSearch = () => {
-        const filteredResults = shelters.filter( (item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+        const filteredResults = shelters.filter( (item) => 
+            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.location.toLowerCase().includes(searchQuery.toLowerCase()) );
         setResults(filteredResults);
     };
     return(
         <>
         <input type="text" placeholder="Location" value ={searchQuery} onChange = { (e) => setSearchQuery(e.target.value)}/>
         <button id="searchButton" onClick={handleSearch}>Search</button>
-
-        <ul className = "searchList">
-            {results.length > 0 ? (results.map((item, index) => <li key={index}>{item.name} {item.location}</li>)) : ( <p> No results found </p>)}
-        </ul>
+        <div>
+            {results.length > 0 ? (
+                results.map((shelter, index) => <ShelterCard key={index} shelter={shelter} />)
+            ) : (
+                <p>No results found</p>
+            )}
+        </div>
         </> 
     )
 }
 
 export default Explore
+
+export function FilterBy() {
+    const [selectedTag, setSelectedTag] = useState(null);
+ 
+    const allTags = [...new Set(shelters.flatMap(shelter => shelter.tags))];
+  
+    const filteredShelters = selectedTag
+      ? shelters.filter(shelter => shelter.tags.includes(selectedTag))
+      : shelters;
+  
+    return (
+      <div>
+        <Filter selectedTag={selectedTag} setSelectedTag={setSelectedTag} tags={allTags} />
+  
+        {filteredShelters.map((shelter, index) => (
+          <div key={index} className={`filterDiv ${shelter.tags.join(" ")}`}>
+            <h2>{shelter.name}</h2>
+            <p>{shelter.location}</p>
+            <p>Tags: {shelter.tags.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+const pageStyle = {
+    width: '90vw',
+}

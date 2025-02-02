@@ -14,6 +14,20 @@ const ShelterCard = ({ shelters, handleAddLocation }) => {
 
 const cardStyle = {
 
+const ShelterCard = ({ shelter }) => {
+  return (
+    <div className={`filterDiv ${shelter.tags}`}>
+        <div style={styles}>
+          <h3>{shelter.name}</h3>
+          <p>{shelter.location}</p>
+        </div>
+    </div>
+  );
+};
+
+export default ShelterCard;
+
+const styles = {
   borderWidth: 1,
   borderColor: 'red',
   borderStyle: 'solid',
@@ -25,3 +39,5 @@ const cardStyle = {
 
 
 export default ShelterCard;
+  width: '50%'
+}
